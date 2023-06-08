@@ -1,21 +1,7 @@
 import {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Loader from 'react-loader-spinner'
-import {
-  TechEraContainer,
-  Heading,
-  TechEraContentContainer,
-  TechList,
-  Tech,
-  Logo,
-  Name,
-} from './styledComponents'
-import {
-  FailureViewContainer,
-  FailureImage,
-  RetryButton,
-  Description,
-} from '../TechDetails/styledComponents'
+
 import Header from '../Header'
 import './index.css'
 
@@ -65,29 +51,29 @@ class TechEra extends Component {
   renderSuccessView = () => {
     const {techList} = this.state
     return (
-      <TechEraContentContainer>
-        <Heading>Courses</Heading>
-        <TechList>
+      <div className="techEraContentContainer">
+        <h1>Courses</h1>
+        <ul>
           {techList.map(eachTech => {
             const {id, name, logoUrl} = eachTech
             return (
-              <Tech key={id}>
+              <li key={id}>
                 <Link to={`/courses/${id}`} className="link">
-                  <Logo src={logoUrl} />
-                  <Name>{name}</Name>
+                  <img src={logoUrl} alt={name} />
+                  <p>{name}</p>
                 </Link>
-              </Tech>
+              </li>
             )
           })}
-        </TechList>
-      </TechEraContentContainer>
+        </ul>
+      </div>
     )
   }
 
   renderLoadingView = () => (
-    <TechEraContentContainer>
+    <div className="techEraContentContainer" data-testid="loader">
       <Loader type="TailSpin" />
-    </TechEraContentContainer>
+    </div>
   )
 
   onRetry = () => {
@@ -95,19 +81,18 @@ class TechEra extends Component {
   }
 
   renderFailureView = () => (
-    <FailureViewContainer>
-      <FailureImage
+    <div className="FailureViewContainer">
+      <img
+        className="FailureImage"
         src="https://assets.ccbp.in/frontend/react-js/tech-era/failure-img.png"
         alt="failure view"
       />
-      <Name>Oops! Something Went Wrong</Name>
-      <Description>
-        We cannot seem to find the page you are looking for
-      </Description>
-      <RetryButton type="button" onClick={this.onRetry}>
+      <h1>Oops! Something Went Wrong</h1>
+      <p>We cannot seem to find the page you are looking for</p>
+      <button className="RetryButton" type="button" onClick={this.onRetry}>
         Retry
-      </RetryButton>
-    </FailureViewContainer>
+      </button>
+    </div>
   )
 
   renderSomething = apiStatus => {
@@ -127,10 +112,10 @@ class TechEra extends Component {
   render() {
     const {apiStatus} = this.state
     return (
-      <TechEraContainer>
+      <div className="TechEraContainer">
         <Header />
         {this.renderSomething(apiStatus)}
-      </TechEraContainer>
+      </div>
     )
   }
 }

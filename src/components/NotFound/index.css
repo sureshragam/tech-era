@@ -1,0 +1,13 @@
+.notFoundContainer {
+  height: 100vh;
+}
+
+.image {
+  width: 30%;
+  margin: auto;
+  display: block;
+  margin-top: 30px;
+}
+.heading {
+  text-align: center;
+}

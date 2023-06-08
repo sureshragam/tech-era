@@ -1,9 +1,7 @@
-import styled from 'styled-components'
-
-export const TechDetailsContainer = styled.div`
+.techDetailsContainer {
   height: 100vh;
-`
-export const TechDetailsContentContainer = styled.div`
+}
+.techDetailsContentContainer {
   width: 70%;
   margin: auto;
   display: flex;
@@ -12,35 +10,36 @@ export const TechDetailsContentContainer = styled.div`
   border-radius: 8px;
   box-shadow: 0.5px 0.5px 12px 0.5px #64748b;
   margin-top: 100px;
-`
-export const Image = styled.img`
+}
+.techDetailsContentContainer > .image {
   width: 25%;
-`
-export const Content = styled.div`
+  margin-top: 0px;
+}
+.content {
   padding: 10px 20px;
-`
-export const Name = styled.h1`
+}
+.name {
   color: #1e293b;
   font-size: 35px;
-`
-export const Description = styled.p`
+}
+.description {
   color: #475569;
   font-size: 20px;
-`
-export const LoaderContainer = styled.div`
+}
+.loaderContainer {
   width: 80%;
   margin: auto;
   text-align: center;
-`
-export const FailureViewContainer = styled.div`
+}
+.failureViewContainer {
   width: 80%;
   margin: auto;
   text-align: center;
-`
-export const FailureImage = styled.img`
+}
+.failureImage {
   width: 40%;
-`
-export const RetryButton = styled.button`
+}
+.retryButton {
   padding: 10px 20px;
   color: white;
   border-radius: 5px;
@@ -48,4 +47,4 @@ export const RetryButton = styled.button`
   background-color: #4656a1;
   border-style: none;
   width: 130px;
-`
+}

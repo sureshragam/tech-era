@@ -1,18 +1,7 @@
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 import Header from '../Header'
-import {
-  TechDetailsContainer,
-  TechDetailsContentContainer,
-  Name,
-  Description,
-  Content,
-  Image,
-  LoaderContainer,
-  FailureViewContainer,
-  FailureImage,
-  RetryButton,
-} from './styledComponents'
+import './index.css'
 
 const apiStatusConstrains = {
   initial: 'INITIAL',
@@ -65,48 +54,45 @@ class TechDetails extends Component {
   }
 
   renderSuccessView = () => {
-    console.log('loadingView')
     const {techDetails} = this.state
     const {imageUrl, description, name} = techDetails
 
     return (
-      <TechDetailsContentContainer>
-        <Image src={imageUrl} />
-        <Content>
-          <Name>{name}</Name>
-          <Description>{description}</Description>
-        </Content>
-      </TechDetailsContentContainer>
+      <div className="techDetailsContentContainer">
+        <img className="image" src={imageUrl} alt={name} />
+        <div className="content">
+          <h1 className="name">{name}</h1>
+          <p className="description">{description}</p>
+        </div>
+      </div>
     )
   }
 
-  renderLoadingView = () => {
-    console.log('loadingView')
-    return (
-      <LoaderContainer>
-        <Loader type="TailSpin" />
-      </LoaderContainer>
-    )
-  }
+  renderLoadingView = () => (
+    <div className="loaderContainer" data-testid="loader">
+      <Loader type="TailSpin" />
+    </div>
+  )
 
   onRetry = () => {
     this.getTechDetails()
   }
 
   renderFailureView = () => (
-    <FailureViewContainer>
-      <FailureImage
+    <div className="failureViewContainer">
+      <img
+        className="failureImage"
         src="https://assets.ccbp.in/frontend/react-js/tech-era/failure-img.png"
         alt="failure view"
       />
-      <Name>Oops! Something Went Wrong</Name>
-      <Description>
+      <h1 className="name">Oops! Something Went Wrong</h1>
+      <p className="description">
         We cannot seem to find the page you are looking for
-      </Description>
-      <RetryButton type="button" onClick={this.onRetry}>
+      </p>
+      <button className="retryButton" type="button" onClick={this.onRetry}>
         Retry
-      </RetryButton>
-    </FailureViewContainer>
+      </button>
+    </div>
   )
 
   renderSomething = apiStatus => {
@@ -126,10 +112,10 @@ class TechDetails extends Component {
   render() {
     const {apiStatus} = this.state
     return (
-      <TechDetailsContainer>
+      <div className="techDetailsContainer">
         <Header />
         {this.renderSomething(apiStatus)}
-      </TechDetailsContainer>
+      </div>
     )
   }
 }

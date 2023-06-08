@@ -1,21 +1,17 @@
-import {withRouter} from 'react-router-dom'
-import {Navbar, Image, LogoButton} from './styledComponents'
+import {Link, withRouter} from 'react-router-dom'
 
-const Header = props => {
-  const onCLickLogo = () => {
-    const {history} = props
-    history.replace('/')
-  }
-  return (
-    <Navbar>
-      <LogoButton type="button" onClick={onCLickLogo}>
-        <Image
-          src="https://assets.ccbp.in/frontend/react-js/tech-era/website-logo-img.png"
-          alt="website logo"
-        />
-      </LogoButton>
-    </Navbar>
-  )
-}
+import './index.css'
+
+const Header = () => (
+  <nav>
+    <Link to="/" className="link">
+      <img
+        className="nav-logo"
+        src="https://assets.ccbp.in/frontend/react-js/tech-era/website-logo-img.png"
+        alt="website logo"
+      />
+    </Link>
+  </nav>
+)
 
 export default withRouter(Header)
